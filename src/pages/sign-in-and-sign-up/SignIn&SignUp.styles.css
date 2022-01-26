@@ -1,0 +1,15 @@
+.SignInSignupWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    background-color: cadetblue;
+}
+
+.signInSection {
+    flex: 50%;
+    background-color: aquamarine;
+}
+.signUpSection {
+    flex: 50%;
+    background-color: bisque;
+}
