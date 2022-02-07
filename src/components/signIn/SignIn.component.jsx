@@ -2,6 +2,10 @@ import React, {useState} from 'react';
 import CustomInput from '../customInput/CustomInput.component';
 import CustomButton from '../customButton/CustomButton.component';
 
+import { auth } from '../../firebase/firebase.utils';
+import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+
+
 import './signIn.styles.css';
 
 const SignIn = () => {
@@ -18,6 +22,17 @@ const click = () => {
   console.log(password , email);
 }
 
+const signInWithGoogle = () => {
+  const provider = new GoogleAuthProvider();
+  signInWithPopup(auth, provider)
+  .then((result) => {
+    console.log('result', result);
+  })
+  .catch((err) => {
+    console.log(err)
+  })
+}
+
     return (
         <div className='signInWrapper'>
         <h2>I already have an account</h2>
@@ -25,7 +40,7 @@ const click = () => {
           <CustomInput type="password" value={password} name="password" id="passwordd" handleChange={handlePasswordChange}/>
           <div className='btnWrapper'>
             <CustomButton onClick={click} title='Sign In'/>
-            <CustomButton onClick={click} color="primary" title='Sign In With Google'/>
+            <CustomButton onClick={signInWithGoogle} color="primary" title='Sign In With Google'/>
           </div>
         </div>
     )
