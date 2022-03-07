@@ -1,8 +1,8 @@
-
-// import { getAuth, signInWithRedirect  } from "firebase/auth";
-
 import { initializeApp } from 'firebase/app';
-import { getAuth } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+// import { collection, getDocs } from "firebase/firestore"; 
+import { useEffect, useState } from 'react';
 
 const firebaseConfig = {
     apiKey: "AIzaSyBN54EtaepistJ9Uv6HRIYzdTCu8ht9jjI",
@@ -14,4 +14,45 @@ const firebaseConfig = {
     measurementId: "G-V82C6FNW09"
 };
 const app = initializeApp(firebaseConfig);
+export const fireStore = getFirestore();
+
 export const auth = getAuth(app);
+
+// export const createUserProfileDocument = async (userAuth, additionalData) => {
+//     if(!userAuth) return ;
+//     console.log('test', getDocs(collection(fireStore, "users")));
+//     const querySnapshot = await getDocs(collection(fireStore, "users"));
+//     console.log('querySnapshot', querySnapshot);
+//     querySnapshot.forEach((doc) => {
+//       console.log(`${doc.id} => ${doc.data()}`);
+//     });
+// }
+
+export function signup(email, password, displayname) {
+  console.log('displayName', displayname);
+  return  createUserWithEmailAndPassword(auth,email, password, displayname )
+}
+
+export function signin(email, password) {
+  return  signInWithEmailAndPassword(auth,email, password )
+}
+
+export function logout() {
+  return signOut(auth);
+}
+
+// custom hook 
+
+export function useAuth() {
+  const [currentUser, setCurrentUser ] = useState();
+
+  useEffect(() => {
+    const unsub = onAuthStateChanged(auth, user => setCurrentUser(user));
+    return unsub;
+  }, [])
+  return currentUser;
+}
+
+
+
+

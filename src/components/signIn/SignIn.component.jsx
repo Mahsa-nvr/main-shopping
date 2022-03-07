@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import CustomInput from '../customInput/CustomInput.component';
 import CustomButton from '../customButton/CustomButton.component';
 
-import { auth } from '../../firebase/firebase.utils';
+import { auth, signin } from '../../firebase/firebase.utils';
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
 
@@ -18,15 +18,18 @@ const SignIn = () => {
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   }
-const click = () => {
-  console.log(password , email);
+const signInBtn = (e) => {
+  e.preventDefault();
+  signin(email, password);
+  setEmail('');
+  setPassword('');
 }
 
 const signInWithGoogle = () => {
   const provider = new GoogleAuthProvider();
   signInWithPopup(auth, provider)
   .then((result) => {
-    console.log('result', result);
+    console.log('result with google sign in', result);
   })
   .catch((err) => {
     console.log(err)
@@ -39,7 +42,7 @@ const signInWithGoogle = () => {
           <CustomInput type="email" value={email} name="email" id="Emaill" handleChange={handleEmailChange}/>
           <CustomInput type="password" value={password} name="password" id="passwordd" handleChange={handlePasswordChange}/>
           <div className='btnWrapper'>
-            <CustomButton onClick={click} title='Sign In'/>
+            <CustomButton onClick={signInBtn} title='Sign In'/>
             <CustomButton onClick={signInWithGoogle} color="primary" title='Sign In With Google'/>
           </div>
         </div>
