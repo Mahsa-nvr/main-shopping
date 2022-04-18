@@ -5,6 +5,7 @@ import SignUp from '../../components/signUp/SignUp.component';
 import './SignIn&SignUp.styles.css';
 
 const SignInSignup = () => {
+    console.log('SignInSignup');
     return (
         <div className='SignInSignupWrapper'>
             <div className='signInSection'><SignIn /></div>

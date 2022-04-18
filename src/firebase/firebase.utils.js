@@ -49,7 +49,7 @@ export function useAuth() {
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, user => setCurrentUser(user));
     return unsub;
-  }, [])
+  }, [currentUser])
   return currentUser;
 }
 
