@@ -30,3 +30,9 @@
   .price {
     width: 10%;
   }
+
+.add_to_cart_btn {
+  position: absolute;
+  width: 80%;
+  top: 60%;
+}

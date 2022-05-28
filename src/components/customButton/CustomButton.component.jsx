@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { Button } from 'reactstrap';
 
 const CustomButton = (props) => {
-    const { onClick, title, color } = props;
+    const { onClick, title, color, className } = props;
     return (
-        <div>
+        <div className={className}>
             <Button onClick={onClick} color={color}>{ title }</Button>
         </div>
     )
