@@ -4,11 +4,12 @@
     flex-direction: column;
     height: 350px;
     align-items: center;
+    position: relative;
 }
 
 .image {
     width: 100%;
-    height: 95%;
+    height: 83%;
     background-size: cover;
     background-position: center;
     margin-bottom: 5px;
@@ -33,6 +34,6 @@
 
 .add_to_cart_btn {
   position: absolute;
-  width: 80%;
-  top: 60%;
+  top: 67%;
+  width: 83%;
 }
