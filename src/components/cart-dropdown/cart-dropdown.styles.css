@@ -10,6 +10,7 @@
   top: 90px;
   right: 40px;
   z-index: 5;
+  overflow-y: scroll;
 }
 
 .cart-items {
@@ -22,4 +23,9 @@
 button {
   margin-top: auto;
   width: 100%;
+}
+
+.btn_checkout {
+  position: sticky;
+  top: 90%;
 }
