@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useAuth }  from './firebase/firebase.utils';
 import { connect } from 'react-redux';
 import { setCurrentUser } from './redux/user/user.actions';
+import { selectCurrentUser } from './redux/user/user.selector'
 import HomePage from './pages/homepage/homepage.component';
 import ShopPage from './pages/shoppage/shoppage.component';
 import Header from './components/header/header.component';
@@ -32,8 +33,8 @@ function App(props) {
   );
 }
 
-const mapStateToProps = user => ({
-  currentUser : user.currentUser
+const mapStateToProps = state => ({
+  currentUser : selectCurrentUser(state)
 })
 
 const mapDispatchToProps = dispatch => ({
