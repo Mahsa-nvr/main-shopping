@@ -1,0 +1,13 @@
+.checkout-container {
+    background-color: aqua;
+    width: 70%;
+    margin: auto;
+}
+
+.checkout-header {
+    background-color: red;
+}
+
+.checkout-item{
+    padding: 20px;
+}

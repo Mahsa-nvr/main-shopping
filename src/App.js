@@ -8,6 +8,7 @@ import { selectCurrentUser } from './redux/user/user.selector'
 import HomePage from './pages/homepage/homepage.component';
 import ShopPage from './pages/shoppage/shoppage.component';
 import Header from './components/header/header.component';
+import CheckoutPage from './pages/checkoutpage/checkoutpage.component';
 import SignInSignup from './pages/sign-in-and-sign-up/SignIn&SignUp.component';
 import './App.css';
 
@@ -27,6 +28,7 @@ function App(props) {
         <Route exact path='/' element={<HomePage/>} />
         <Route path='/shop' element={<ShopPage/>} />
         <Route path='/signIn' element={<SignInSignup/>} />
+        <Route path='/checkout' element={<CheckoutPage/>} />
       </Routes>
     </Router>
     </div>
