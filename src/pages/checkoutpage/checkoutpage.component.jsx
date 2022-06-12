@@ -1,19 +1,37 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { selectCartItems, selectCartTotal } from '../../redux/cart/cart.selector';
 import './checkoutpage.styles.css';
 
-const CheckoutPage = () => {
-    console.log('hi')
+const CheckoutPage = ({cartItems, total}) => {
+    
     return (
-        <div className='checkout-container'>
+        <div className='checkout-page'>
             <div className='checkout-header'> 
-               <span className='checkout-item'>hi</span>
-               <span className='checkout-item'>hi</span>
-               <span className='checkout-item'>hi</span>
-               <span className='checkout-item'>hi</span>
-               <span className='checkout-item'>hi</span>
+              <div className="header-block">
+                <span>product</span>
+              </div>
+              <div className="header-block">
+                <span>description</span>
+              </div>
+              <div className="header-block">
+                <span>quantity</span>
+              </div>
+              <div className="header-block">
+                <span>price</span>
+              </div>
+              <div className="header-block">
+                <span>remove</span>
+              </div>
             </div>
+            {cartItems.map(cartItems => cartItems.name)}
+            <div className='total'>Total: ${total}</div>
         </div>
     )
 }
+const mapStateToProps = state => ({
+    cartItems : selectCartItems(state),
+    total: selectCartTotal(state),
+})
 
-export default CheckoutPage;
+export default connect(mapStateToProps)(CheckoutPage);
