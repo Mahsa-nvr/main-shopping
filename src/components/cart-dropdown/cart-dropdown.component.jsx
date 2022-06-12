@@ -1,5 +1,5 @@
 import React from 'react';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import CustomButton from '../customButton/CustomButton.component';
@@ -8,10 +8,10 @@ import { selectCartItems } from '../../redux/cart/cart.selector';
 import { toggleCardHidden } from '../../redux/cart/cart.action';
 import './cart-dropdown.styles.css';
 
-const CartDropDown = ({ cartItems , toggleCardHidden}) => {
+const CartDropDown = ({ cartItems , dispatch}) => {
  const navigate = useNavigate();
  const  checkoutBtn = ()=> {
-  toggleCardHidden();
+  dispatch(toggleCardHidden());
   navigate('/checkout')  
  }
     return (
@@ -30,8 +30,4 @@ const mapStateToProps = (state) => ({
 cartItems : selectCartItems(state),
 })
 
-const mapDispatchToProps = dispatch => ({
-  toggleCardHidden : () => dispatch(toggleCardHidden())
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(CartDropDown);
+export default connect(mapStateToProps)(CartDropDown);
