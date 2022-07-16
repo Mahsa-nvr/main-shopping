@@ -3,11 +3,12 @@ import { generatePath, useNavigate } from 'react-router';
 import CollectionItem from '../collection-item/collection-item.component';
 import './collection-preview.styles.css';
 const CollectionPreview = (props) => {
-   const { title , items } = props;
+   const { title , items, routeName } = props;
+   console.log('routename', routeName)
    const navigate = useNavigate();
    const GoToCollectionPage = () => {
     navigate(generatePath('/shop/:collection', {
-        collection : title 
+        collection : routeName
     }))
    }
     return (

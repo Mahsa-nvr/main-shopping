@@ -5,3 +5,4 @@ export const selectShopItems = createSelector(
     [selectShop],
     shop => shop.collections,
 )
+
